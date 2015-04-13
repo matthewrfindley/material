@@ -68,6 +68,32 @@ describe('mdCheckbox', function() {
     checkbox.triggerHandler('click');
     expect($rootScope.blue).toBe(true);
 
+  }));
+
+  it('should preserve existing tabindex', inject(function($compile, $rootScope) {
+    var element = $compile('<div>' +
+                             '<md-checkbox ng-model="blue" tabindex="2">' +
+                             '</md-checkbox>' +
+                           '</div>')($rootScope);
+
+    var checkbox = element.find('md-checkbox');
+
+    expect(checkbox.attr('tabindex')).toBe('2');
+  }));
+
+  it('should disable with tabindex=-1', inject(function($compile, $rootScope) {
+    var element = $compile('<div>' +
+                             '<md-checkbox ng-disabled="isDisabled" ng-model="blue">' +
+                             '</md-checkbox>' +
+                           '</div>')($rootScope);
+
+    var checkbox = element.find('md-checkbox');
+
+    $rootScope.$apply('isDisabled = true');
+    expect(checkbox.attr('tabindex')).toBe('-1');
+
+    $rootScope.$apply('isDisabled = false');
+    expect(checkbox.attr('tabindex')).toBe('0');
 
   }));
 

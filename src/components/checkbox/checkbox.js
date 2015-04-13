@@ -72,7 +72,7 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
   function compile (tElement, tAttrs) {
 
     tAttrs.type = 'checkbox';
-    tAttrs.tabIndex = 0;
+    tAttrs.tabindex = tAttrs.tabindex || 0;
     tElement.attr('role', tAttrs.type);
 
     return function postLink(scope, element, attr, ngModelCtrl) {
@@ -83,6 +83,15 @@ function MdCheckboxDirective(inputDirective, $mdInkRipple, $mdAria, $mdConstant,
         scope.$watch(
             scope.$eval.bind(scope, attr.ngChecked),
             ngModelCtrl.$setViewValue.bind(ngModelCtrl)
+        );
+      }
+      if (attr.ngDisabled) {
+        scope.$watch(
+          scope.$eval.bind(scope, attr.ngDisabled),
+          function(disabled) {
+            var disabledTabindex = disabled ? '-1' : attr.tabindex;
+            element.attr('tabindex', disabledTabindex);
+          }
         );
       }
 
