@@ -52,6 +52,10 @@ describe('md-button', function() {
 
   describe('with href or ng-href', function() {
 
+    it("should fail", function() {
+      expect(1).toBe(2);
+    });
+
     it('should be anchor if href attr', inject(function($compile, $rootScope) {
       var button = $compile('<md-button href="/link">')($rootScope.$new());
       $rootScope.$apply();
