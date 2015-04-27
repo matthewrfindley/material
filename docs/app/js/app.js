@@ -150,6 +150,11 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope) {
         name: 'Typography',
         url: '/CSS/typography',
         type: 'link'
+      },
+      {
+        name: 'Color Palette',
+        url: '/CSS/color_palette',
+        type: 'link'
       }]
     },{
       name: 'Theming',

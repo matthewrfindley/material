@@ -620,7 +620,57 @@ ul.methods > li:first-child > *:first-child {
   padding-top: 0;
 }
 
-/* Styles for Windows High Contrast mode */
+/**********************
+* CSS - Color Palette
+***********************/
+.color-palette {
+  margin-top: 16px;
+}
+
+.color-palette:first-child {
+  margin-top: 0
+}
+
+.color-palette demo-color-swatch {
+  margin-right: 8px;
+}
+
+.color-palette demo-color-swatch:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 599px) {
+  .color-palette demo-color-swatch {
+    margin-top: 16px;
+    margin-right: 0;
+    -webkit-flex: 0; /* CSS fix for safari height using layout-sm / flex='100' */
+  }
+
+  .color-palette demo-color-swatch:first-child {
+    margin-top: 0;
+  }
+}
+
+ul.color-swatch li {
+  margin: 0;
+  padding: 8px;
+  clear: both;
+}
+
+ul.color-swatch .color-name {
+  display: block;
+  margin-bottom: 16px
+}
+
+ul.color-swatch li.main-color {
+  margin-bottom: 8px;
+}
+
+ul.color-swatch .hex {
+  float: right;
+}
+
+ /* Styles for Windows High Contrast mode */
 @media screen and (-ms-high-contrast: active) {
   a {
     text-decoration: underline;
